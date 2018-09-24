@@ -11,18 +11,15 @@ export class HeroesComponent implements OnInit {
 
   heroes: Heroe[] = [];
 
-  constructor( private _heroesService: HeroesService,
-               private router: Router ) {
-    console.log('Contructor!');
-  }
+  constructor( private router: Router,
+               private _heroesService: HeroesService ) {}
 
   ngOnInit() {
     this.heroes = this._heroesService.getHeroes();
-    console.log(this.heroes);
   }
 
-  seeHeroe( index: number ) {
+  /* seeHeroe( index: number ) {
     this.router.navigate( ['heroes', 'heroe', index] );
-  }
+  } */
 
 }
