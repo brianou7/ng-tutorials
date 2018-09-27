@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
   }
 
-  searchHeroe( text: String ){
+  searchHeroe( text: String ) {
     this.router.navigate(['/search', text]);
   }
 

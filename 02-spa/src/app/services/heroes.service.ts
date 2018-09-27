@@ -70,10 +70,10 @@ export class HeroesService {
     searchHeroes( text: string): Heroe[] {
         let heroes: Heroe[] = [];
 
-        for ( let i = 0; i < this.heroes.length; i++){
+        for ( let i = 0; i < this.heroes.length; i++) {
             let heroe = this.heroes[i];
-            
-            if (heroe.nombre.toLowerCase().indexOf(text.toLowerCase()) >= 0){
+
+            if (heroe.nombre.toLowerCase().indexOf(text.toLowerCase()) >= 0) {
                 heroe.index = i;
                 heroes.push(heroe);
             }
