@@ -1,15 +1,27 @@
 import { Component, OnInit } from '@angular/core';
+import { SpotifyService } from '../../services/spotify.service';
 
 @Component({
   selector: 'app-searh',
   templateUrl: './searh.component.html',
   styles: []
 })
-export class SearhComponent implements OnInit {
+export class SearhComponent {
 
-  constructor() { }
+  artists: any = [];
 
-  ngOnInit() {
+  loading: boolean;
+
+  constructor( private spotify: SpotifyService) { }
+
+  search(term: string) {
+    this.loading = true;
+
+    this.spotify.getArtists(term)
+      .subscribe( (data: any) => {
+        this.artists = data;
+        this.loading = false;
+      });
   }
 
 }
