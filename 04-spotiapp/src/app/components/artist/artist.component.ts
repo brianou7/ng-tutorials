@@ -11,6 +11,8 @@ export class ArtistComponent {
 
   private artist: any = {};
 
+  private topTracks: any[] = [];
+
   private loadingArtist: boolean;
 
   constructor( private router: ActivatedRoute,
@@ -19,7 +21,7 @@ export class ArtistComponent {
     this.loadingArtist = true;
       this.router.params.subscribe( args => {
         this.getArtist(args['id']);
-        this.loadingArtist = false;
+        this.getTopTracks(args['id']);
       });
 
   }
@@ -28,7 +30,15 @@ export class ArtistComponent {
     return this.spotify.getArtist(id)
       .subscribe( artist => {
         this.artist = artist;
-        console.log(this.artist);
+        this.loadingArtist = false;
+      });
+  }
+
+  getTopTracks( id: string ): any {
+    return this.spotify.getTopTracks(id)
+      .subscribe( topTracks => {
+        this.topTracks = topTracks;
+        console.log(topTracks);
       });
   }
 
